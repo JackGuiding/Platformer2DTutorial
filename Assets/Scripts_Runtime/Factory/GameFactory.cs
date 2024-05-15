@@ -20,6 +20,8 @@ namespace PlatformerTutorial {
             RoleEntity role = go.GetComponent<RoleEntity>();
             role.Ctor();
 
+            role.allowJumpTimes = 2;
+
             return role;
         }
 

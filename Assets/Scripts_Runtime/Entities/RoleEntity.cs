@@ -15,6 +15,8 @@ namespace PlatformerTutorial {
 
         [SerializeField] Animator animator;
 
+        public int allowJumpTimes;
+
         // 所有继承自 MonoBehaviour 的类都禁止使用构造函数
         // public RoleEntity() { } 
 
@@ -54,7 +56,10 @@ namespace PlatformerTutorial {
             }
         }
 
-        public void Falling(float fallingSpeed, float fallingSpeedMax, float fixdt) {
+        public void Falling(float jumpAxis, float fallingSpeed, float fallingSpeedMax, float fixdt) {
+
+            // TODO: 如果按住跳, 则下落速度减缓
+
             // 只改变y, 保证 x 不被改变
             Vector2 oldVelocity = rb.velocity;
             oldVelocity.y -= fallingSpeed * fixdt;
@@ -62,6 +67,23 @@ namespace PlatformerTutorial {
                 oldVelocity.y = -fallingSpeedMax;
             }
             rb.velocity = oldVelocity;
+
+        }
+
+        public void Jump(float jumpAxis, float jumpForce, float fixdt) {
+            if (!AllowJump()) {
+                return;
+            }
+            if (jumpAxis != 0) {
+                Vector2 oldVelocity = rb.velocity;
+                oldVelocity.y = jumpForce;
+                rb.velocity = oldVelocity;
+                allowJumpTimes -= 1;
+            }
+        }
+
+        bool AllowJump() {
+            return allowJumpTimes > 0;
         }
 
     }

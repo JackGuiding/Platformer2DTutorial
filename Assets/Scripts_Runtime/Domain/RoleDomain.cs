@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace PlatformerTutorial {
 
     public static class RoleDomain {
@@ -21,11 +23,24 @@ namespace PlatformerTutorial {
 
         public static void MoveByOwnerInput(GameContext ctx, RoleEntity role, float fixdt) {
             var input = ctx.inputManager;
-            role.Move(input.moveAxis, 5.5f, fixdt);
+            Move(ctx, role, input.moveAxis, fixdt);
+        }
+
+        public static void Move(GameContext ctx, RoleEntity role, Vector2 moveAxis, float fixdt) {
+            role.Move(moveAxis, 5.5f, fixdt);
+        }
+
+        public static void JumpByOwnerInput(GameContext ctx, RoleEntity role, float fixdt) {
+            var input = ctx.inputManager;
+            Jump(ctx, role, input.jumpAxis, fixdt);
+        }
+
+        public static void Jump(GameContext ctx, RoleEntity role, float jumpAxis, float fixdt) {
+            role.Jump(jumpAxis, 10f, fixdt);
         }
 
         public static void Falling(GameContext ctx, RoleEntity role, float fixdt) {
-            role.Falling(22.5f, 40f, fixdt);
+            role.Falling(0, 22.5f, 40f, fixdt);
         }
 
     }

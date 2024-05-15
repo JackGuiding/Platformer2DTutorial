@@ -69,6 +69,7 @@ namespace PlatformerTutorial {
             ctx.roleRepository.Foreach(role => {
                 if (game.roleOwnerID == role.id) {
                     RoleDomain.MoveByOwnerInput(ctx, role, fixdt);
+                    RoleDomain.JumpByOwnerInput(ctx, role, fixdt);
                 } else {
                     // Move By AI
                 }
