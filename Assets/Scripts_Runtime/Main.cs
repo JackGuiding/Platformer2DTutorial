@@ -6,12 +6,34 @@ namespace PlatformerTutorial {
 
     public class Main : MonoBehaviour {
 
+        GameContext ctx;
+
         bool isTearDown;
 
         void Awake() {
+
             isTearDown = false;
 
+            // ==== Instantiate ====
+            ctx = new GameContext();
+
+            // ==== Binding ====
+            BindingEvents();
+
             Debug.Log("He");
+        }
+
+        void BindingEvents() {
+            BusinessEvents businessEvents = ctx.events;
+            businessEvents.Login_OnClickStartGameHandle = () => {
+                Debug.Log("Start Game");
+            };
+        }
+
+        void OnGUI() {
+
+            Business_Login.ProcessGUI(ctx);
+
         }
 
         void Update() {

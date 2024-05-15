@@ -1,0 +1,11 @@
+一个游戏架构:
+Factory 生成对象/销毁对象
+Context 存储整个游戏的内存数据
+    - Repository
+    - 例: RoleRepository 对应存储 RoleEntity
+Controller 控制
+    - 例: RoleFSMController 驱动单个 RoleEntity 的逻辑状态机(选择执行移动还是攻击)
+Business 控制所有
+    - 例: Business_Normal, for 循环所有 RoleEntity/BulletEntity
+Domain 行为
+    - 例: RoleDomain 执行单个 RoleEntity 的逻辑(移动/攻击)

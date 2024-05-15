@@ -5,6 +5,8 @@ namespace PlatformerTutorial {
 
     public class RoleEntity : MonoBehaviour {
 
+        public int id;
+
         [SerializeField] Rigidbody2D rb;
 
         [SerializeField] SpriteRenderer sr;
@@ -12,7 +14,7 @@ namespace PlatformerTutorial {
         [SerializeField] Animator animator;
 
         public void Ctor() {
-            
+
         }
 
     }
