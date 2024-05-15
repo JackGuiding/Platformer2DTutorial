@@ -16,27 +16,46 @@ namespace PlatformerTutorial {
 
             // ==== Instantiate ====
             ctx = new GameContext();
+            ctx.gameEntity = GameFactory.Game_Create();
 
             // ==== Binding ====
             BindingEvents();
 
-            Debug.Log("He");
+            // ==== Enter ====
+            Business_Login.Enter(ctx);
+
         }
 
         void BindingEvents() {
             BusinessEvents businessEvents = ctx.events;
             businessEvents.Login_OnClickStartGameHandle = () => {
-                Debug.Log("Start Game");
+                // 点击开始游戏
+                Business_Game.Enter(ctx);
             };
         }
 
         void OnGUI() {
 
-            Business_Login.ProcessGUI(ctx);
+            var game = ctx.gameEntity;
+            GameFSMStatus status = game.status;
+            if (status == GameFSMStatus.Login) {
+                Business_Login.ProcessGUI(ctx);
+            } else if (status == GameFSMStatus.Game) {
+                // Business_Game.ProcessGUI(ctx);
+            }
 
         }
 
         void Update() {
+
+            float dt = Time.deltaTime;
+            var game = ctx.gameEntity;
+            GameFSMStatus status = game.status;
+            if (status == GameFSMStatus.Login) {
+                Business_Login.Tick(ctx, dt);
+            } else if (status == GameFSMStatus.Game) {
+                Business_Game.Tick(ctx, dt);
+            }
 
         }
 

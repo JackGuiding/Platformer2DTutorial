@@ -5,8 +5,13 @@ namespace PlatformerTutorial {
 
     public static class Business_Login {
 
-        public static void Enter() {
+        public static void Enter(GameContext ctx) {
             // 打开 Login 界面: 开始游戏
+            ctx.gameEntity.status = GameFSMStatus.Login;
+        }
+
+        public static void Tick(GameContext ctx, float dt) {
+            Debug.Log("Login Tick");
         }
 
         public static void ProcessGUI(GameContext ctx) {
