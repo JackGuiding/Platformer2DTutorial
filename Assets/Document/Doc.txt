@@ -10,3 +10,16 @@
 1. 使用 Addressables 插件
 2. 在编辑器创建: Window -> Asset Management -> Addressables -> Groups, 点击创建
 3. 标记每个资源
+
+==== Tilemap ====
+名词: Palette / Tile
+额外: 安装2DExtra插件, 在Packages/manifest.json文件里添加 "com.unity.2d.tilemap.extras": "https://github.com/Unity-Technologies/2d-extras.git#master"
+1. 创建 Palette
+2. 拖拽 Sprite 到 Palette 上, 自动形成 Tile
+3. 点击 Palette 的 Tile, 点击对应要画的 Tilemap, 开始绘制/擦除
+4. 使用 Coordinate Brush, 可以实时查看坐标
+5. 给 Tilemap 添加 TilemapCollider 组件
+    - 添加 Rigidbody2D, 并设为 static
+    - 添加 CompositeCollider2D 组件
+    - (2023以下的版本)在 TilemapCollider 里勾选 used by composite
+    - (2023版本)在 TilemapCollider 将 CompositeOperation 选择 Merge

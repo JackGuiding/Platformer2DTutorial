@@ -11,7 +11,6 @@ namespace PlatformerTutorial {
         }
 
         public static void Tick(GameContext ctx, float dt) {
-            Debug.Log("Login Tick");
         }
 
         public static void ProcessGUI(GameContext ctx) {

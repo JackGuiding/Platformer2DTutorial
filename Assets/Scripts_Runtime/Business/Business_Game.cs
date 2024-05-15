@@ -31,8 +31,6 @@ namespace PlatformerTutorial {
 
         public static void Tick(GameContext ctx, float dt) {
 
-            Debug.Log("Game Tick");
-
             // ==== Pre ====
             // 用于处理输入: 按键/UI输入
             PreUpdate(ctx, dt);
