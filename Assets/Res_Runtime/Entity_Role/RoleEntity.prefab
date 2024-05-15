@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  body: {fileID: 7192638802071319922}
   rb: {fileID: 8680359761480920237}
   sr: {fileID: 4404846969256301829}
   animator: {fileID: 1991439225860886519}

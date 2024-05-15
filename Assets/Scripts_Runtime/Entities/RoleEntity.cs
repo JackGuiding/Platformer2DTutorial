@@ -7,6 +7,8 @@ namespace PlatformerTutorial {
 
         public int id;
 
+        [SerializeField] Transform body;
+
         [SerializeField] Rigidbody2D rb;
 
         [SerializeField] SpriteRenderer sr;
@@ -25,6 +27,31 @@ namespace PlatformerTutorial {
             Vector2 oldVelocity = rb.velocity;
             oldVelocity.x = moveAxis.x * speed;
             rb.velocity = oldVelocity;
+
+            // 面向
+            Face(moveAxis.x);
+
+            // 播放动画
+            Anim_Move(moveAxis.x);
+
+        }
+
+        void Face(float xDir) {
+            if (xDir > 0) {
+                body.localScale = new Vector3(1, 1, 1);
+            } else if (xDir < 0) {
+                body.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+
+        void Anim_Move(float xDir) {
+            if (xDir != 0) {
+                // 播移动动画
+                animator.Play("Run"); // 传入的是 State 名字而非 Clip 名字
+            } else {
+                // 播放静止动画
+                animator.Play("Idle");
+            }
         }
 
         public void Falling(float fallingSpeed, float fallingSpeedMax, float fixdt) {
