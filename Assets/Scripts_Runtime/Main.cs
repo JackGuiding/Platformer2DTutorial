@@ -30,7 +30,7 @@ namespace PlatformerTutorial {
             BusinessEvents businessEvents = ctx.events;
             businessEvents.Login_OnClickStartGameHandle = () => {
                 // 点击开始游戏
-                Business_Game.Enter(ctx);
+                Business_Game.NewGame(ctx);
             };
         }
 

@@ -7,6 +7,9 @@ namespace PlatformerTutorial {
         public GameFSMStatus status;
         public float restFixTime; // 用于模拟 FixedUpdate
 
+        // 玩家的状态
+        public int roleOwnerID;
+
         public GameEntity() {
             restFixTime = 0;
         }

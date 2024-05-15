@@ -15,7 +15,7 @@ namespace PlatformerTutorial {
         }
 
         public void Add(RoleEntity role) {
-            all.Add(role.id, role);
+            all.Add(role.id, role); // null.xxx 报空引用异常
         }
 
         public bool TryGet(int id, out RoleEntity role) {

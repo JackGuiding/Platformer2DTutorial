@@ -7,7 +7,7 @@ namespace PlatformerTutorial {
             return new GameEntity();
         }
 
-        public static RoleEntity Role_Create() {
+        public static RoleEntity Role_Create(GameContext ctx) {
             // new
             // GameObject.Instantiate
             return null;

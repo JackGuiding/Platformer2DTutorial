@@ -8,4 +8,5 @@ Controller 控制
 Business 控制所有
     - 例: Business_Normal, for 循环所有 RoleEntity/BulletEntity
 Domain 行为
+    - 生成: 调用 Factory, 并且调用 ctx.Repository 存进去
     - 例: RoleDomain 执行单个 RoleEntity 的逻辑(移动/攻击)

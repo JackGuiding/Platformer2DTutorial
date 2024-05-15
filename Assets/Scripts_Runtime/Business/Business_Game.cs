@@ -4,8 +4,29 @@ namespace PlatformerTutorial {
 
     public static class Business_Game {
 
-        public static void Enter(GameContext ctx) {
+        public static void NewGame(GameContext ctx) {
+
+            // 改变程序状态机
             ctx.gameEntity.status = GameFSMStatus.Game;
+
+            // 初始数据
+
+            // 生成角色
+            RoleEntity role = RoleDomain.Spawn(ctx);
+            ctx.gameEntity.roleOwnerID = role.id; // 记录主角
+
+            // 生成地形
+
+        }
+
+        public static void LoadGame(GameContext ctx) {
+
+            // 现存数据: 从文件读取存档 或 从网络
+
+            // 生成角色
+
+            // 生成地形
+
         }
 
         public static void Tick(GameContext ctx, float dt) {
