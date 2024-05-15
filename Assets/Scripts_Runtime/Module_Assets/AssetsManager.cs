@@ -11,8 +11,12 @@ namespace PlatformerTutorial {
         Dictionary<string, GameObject> entities;
         AsyncOperationHandle entitiesHandle;
 
+        Dictionary<int, MapGridElement> mapGrids;
+        AsyncOperationHandle mapGridsHandle;
+
         public AssetsManager() {
             entities = new Dictionary<string, GameObject>();
+            mapGrids = new Dictionary<int, MapGridElement>();
         }
 
         public void LoadAll() {
@@ -20,10 +24,19 @@ namespace PlatformerTutorial {
                 // "Entity" 是 Addressables 里的 Label
                 var op = Addressables.LoadAssetsAsync<GameObject>("Entity", null);
                 var list = op.WaitForCompletion();
-                foreach (var entity in list) {
-                    entities.Add(entity.name, entity);
+                foreach (var go in list) {
+                    entities.Add(go.name, go);
                 }
                 entitiesHandle = op;
+            }
+            {
+                var op = Addressables.LoadAssetsAsync<GameObject>("MapGrid", null);
+                var list = op.WaitForCompletion();
+                foreach (var go in list) {
+                    MapGridElement mapGrid = go.GetComponent<MapGridElement>();
+                    mapGrids.Add(mapGrid.stageID, mapGrid);
+                }
+                mapGridsHandle = op;
             }
         }
 
@@ -31,16 +44,25 @@ namespace PlatformerTutorial {
             if (entitiesHandle.IsValid()) {
                 Addressables.Release(entitiesHandle);
             }
-        }
-
-        bool Entity_TryGet(string name, out GameObject entity) {
-            return entities.TryGetValue(name, out entity);
+            if (mapGridsHandle.IsValid()) {
+                Addressables.Release(mapGridsHandle);
+            }
         }
 
         public GameObject Entity_GetRolePrefab() {
-            GameObject entity;
-            if (entities.TryGetValue("RoleEntity", out entity)) {
-                return entity;
+            entities.TryGetValue("RoleEntity", out GameObject entity);
+            return entity;
+        }
+
+        public GameObject Entity_GetMapPrefab() {
+            entities.TryGetValue("MapEntity", out GameObject entity);
+            return entity;
+        }
+
+        public GameObject MapGrid_Get(int stageID) {
+            MapGridElement mapGrid;
+            if (mapGrids.TryGetValue(stageID, out mapGrid)) {
+                return mapGrid.gameObject;
             } else {
                 return null;
             }

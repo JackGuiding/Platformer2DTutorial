@@ -16,6 +16,7 @@ namespace PlatformerTutorial {
             ctx.gameEntity.roleOwnerID = role.id; // 记录主角
 
             // 生成地形
+            MapEntity map = MapDomain.Spawn(ctx, 1);
 
         }
 

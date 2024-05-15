@@ -6,6 +6,7 @@ namespace PlatformerTutorial {
         // ==== 实体 ====
         public GameEntity gameEntity;
         public RoleRepository roleRepository;
+        public MapRepository mapRepository;
 
         // ==== 模块 ====
         public AssetsManager assetsManager;
@@ -16,6 +17,7 @@ namespace PlatformerTutorial {
         public GameContext() {
 
             roleRepository = new RoleRepository();
+            mapRepository = new MapRepository();
 
             assetsManager = new AssetsManager();
 
