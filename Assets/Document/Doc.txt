@@ -5,6 +5,13 @@
     - 不使用 OnCollisionEnter
     - 使用 Physics2D.BoxCast
 
+==== 玩法 ====
+1. 跳跃分四段动画: 起跳, 从最高点下落, 下落循环, 落地
+2. 跳跃过渡:
+    - 起跳: 直接Play
+    - 起跳状态 -> 开始下落: 过渡条件
+
+
 ==== 动画 ====
 名词: Animator / AnimatorController / State / AnimationClip
 1. Animator 和 SpriteRenderer 放在同一个 GameObject 下

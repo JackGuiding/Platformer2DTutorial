@@ -58,16 +58,6 @@ namespace PlatformerTutorial {
             }
         }
 
-        void Anim_Move(float xDir) {
-            if (xDir != 0) {
-                // 播移动动画
-                animator.Play("Run"); // 传入的是 State 名字而非 Clip 名字
-            } else {
-                // 播放静止动画
-                animator.Play("Idle");
-            }
-        }
-
         public void Falling(float jumpAxis, float fallingSpeed, float fallingSpeedMax, float fixdt) {
 
             // TODO: 如果按住跳, 则下落速度减缓
@@ -80,6 +70,11 @@ namespace PlatformerTutorial {
             }
             rb.velocity = oldVelocity;
 
+            if (oldVelocity.y < 0) {
+                // 播放动画
+                Anim_Falling_Start();
+            }
+
         }
 
         public void Jump(float jumpAxis, float jumpForce, float fixdt) {
@@ -91,16 +86,49 @@ namespace PlatformerTutorial {
                 oldVelocity.y = jumpForce;
                 rb.velocity = oldVelocity;
                 allowJumpTimes -= 1;
+
+                Anim_JumpStart();
             }
         }
 
         public void EnterGround() {
             allowJumpTimes = 2;
+
+            Anim_JumpEnd();
         }
 
         bool AllowJump() {
             return allowJumpTimes > 0;
         }
+
+        #region Animation
+        void Anim_Move(float xDir) {
+            animator.SetFloat("F_MoveSpeed", Mathf.Abs(xDir));
+            // if (xDir != 0) {
+            //     // 播移动动画
+            //     animator.Play("Run"); // 传入的是 State 名字而非 Clip 名字
+            // } else {
+            //     // 播放静止动画
+            //     animator.Play("Idle");
+            // }
+        }
+
+        void Anim_JumpStart() {
+            animator.Play("Jump_Start");
+
+            animator.ResetTrigger("T_Jump_End"); // Bool
+            animator.ResetTrigger("T_Falling_Start");
+        }
+
+        void Anim_Falling_Start() {
+            animator.SetTrigger("T_Falling_Start");
+        }
+
+        void Anim_JumpEnd() {
+            animator.SetTrigger("T_Jump_End");
+        }
+
+        #endregion
 
     }
 }
