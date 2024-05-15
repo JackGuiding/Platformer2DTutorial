@@ -21,6 +21,9 @@ namespace PlatformerTutorial {
             // ==== Binding ====
             BindingEvents();
 
+            // ==== Init ====
+            ctx.assetsManager.LoadAll();
+
             // ==== Enter ====
             Business_Login.Enter(ctx);
 
@@ -68,10 +71,15 @@ namespace PlatformerTutorial {
         }
 
         void TearDown() {
+
             if (isTearDown) {
                 return;
             }
+
             isTearDown = true;
+
+            ctx.assetsManager.UnloadAll();
+
         }
     }
 }

@@ -5,3 +5,8 @@
 3. AnimatorController 切换 State
 4. State 是包含 AnimationClip
 5. 拖拽所有帧图片到 SpriteRenderer 上, 会自动生成 AnimationClip, 并且对应在 AnimatorController 上生成 State
+
+==== 资源模块 ====
+1. 使用 Addressables 插件
+2. 在编辑器创建: Window -> Asset Management -> Addressables -> Groups, 点击创建
+3. 标记每个资源

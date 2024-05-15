@@ -13,6 +13,9 @@ namespace PlatformerTutorial {
 
         [SerializeField] Animator animator;
 
+        // 所有继承自 MonoBehaviour 的类都禁止使用构造函数
+        // public RoleEntity() { } 
+
         public void Ctor() {
 
         }
