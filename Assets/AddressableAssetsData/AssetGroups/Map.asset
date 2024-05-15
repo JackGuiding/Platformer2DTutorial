@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - MapGrid
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 05c63501f5f54a848808bcf62279fc2d
+    m_Address: Grid_Stage2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapGrid
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a20ec5ee29603924c888b78d30f766d3, type: 2}
   m_SchemaSet:
