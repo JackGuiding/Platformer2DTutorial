@@ -24,6 +24,10 @@ namespace PlatformerTutorial {
             role.Move(input.moveAxis, 5.5f, fixdt);
         }
 
+        public static void Falling(GameContext ctx, RoleEntity role, float fixdt) {
+            role.Falling(22.5f, 40f, fixdt);
+        }
+
     }
 
 }

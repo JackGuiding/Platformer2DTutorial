@@ -72,6 +72,7 @@ namespace PlatformerTutorial {
                 } else {
                     // Move By AI
                 }
+                RoleDomain.Falling(ctx, role, fixdt);
             });
 
         }
