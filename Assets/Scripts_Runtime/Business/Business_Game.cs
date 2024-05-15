@@ -13,6 +13,7 @@ namespace PlatformerTutorial {
 
             // 生成角色
             RoleEntity role = RoleDomain.Spawn(ctx);
+            role.PosSet(new Vector2(0, 10));
             ctx.gameEntity.roleOwnerID = role.id; // 记录主角
 
             // 生成地形
@@ -74,7 +75,10 @@ namespace PlatformerTutorial {
                     // Move By AI
                 }
                 RoleDomain.Falling(ctx, role, fixdt);
+                RoleDomain.GroundCheck(ctx, role);
             });
+
+            Physics2D.Simulate(fixdt); // 手动调用物理模拟
 
         }
 

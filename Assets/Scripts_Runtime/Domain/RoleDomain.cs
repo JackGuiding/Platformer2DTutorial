@@ -43,6 +43,38 @@ namespace PlatformerTutorial {
             role.Falling(0, 22.5f, 40f, fixdt);
         }
 
+        public static void GroundCheck(GameContext ctx, RoleEntity role) {
+
+            // 只有下落时/或者在地面上时才检测
+            if (role.Velocity().y > 0) {
+                return;
+            }
+
+            Vector2 size = new Vector2(0.98f, 0.1f);
+            float angle = 0;
+            Vector2 dir = new Vector2(0, -1);
+            RaycastHit2D[] hits = Physics2D.BoxCastAll(role.Pos(), size, angle, dir, 0.5f); // 向下发射一个盒状碰撞体
+            if (hits.Length == 0) {
+                return;
+            }
+
+            bool isCollideGround = false;
+            for (int i = 0; i < hits.Length; i += 1) {
+                RaycastHit2D hit = hits[i];
+                if (hit.collider.gameObject.CompareTag("Ground")) {
+                    isCollideGround = true;
+                    break;
+                }
+            }
+
+            if (isCollideGround) {
+                role.EnterGround();
+            }
+
+            // Physics2D.OverlapBoxAll(); // 无方向的, 只在一个位置检测碰撞
+
+        }
+
     }
 
 }

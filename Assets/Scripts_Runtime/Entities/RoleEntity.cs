@@ -24,6 +24,14 @@ namespace PlatformerTutorial {
 
         }
 
+        public Vector2 Pos() {
+            return body.position;
+        }
+
+        public void PosSet(Vector2 pos) {
+            body.position = pos;
+        }
+
         public void Move(Vector2 moveAxis, float speed, float fixdt) {
             // 只改变x, 保证 y 不被改变
             Vector2 oldVelocity = rb.velocity;
@@ -36,6 +44,10 @@ namespace PlatformerTutorial {
             // 播放动画
             Anim_Move(moveAxis.x);
 
+        }
+
+        public Vector2 Velocity() {
+            return rb.velocity;
         }
 
         void Face(float xDir) {
@@ -80,6 +92,10 @@ namespace PlatformerTutorial {
                 rb.velocity = oldVelocity;
                 allowJumpTimes -= 1;
             }
+        }
+
+        public void EnterGround() {
+            allowJumpTimes = 2;
         }
 
         bool AllowJump() {

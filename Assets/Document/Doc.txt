@@ -1,6 +1,9 @@
 ==== 物理 ====
 1. Rigidbody2D 要设置 Constraints 防止翻滚
 2. 主角会设置 Collision Detection 为 Continous, 检测更消耗性能但更精确
+3. (重要)落地检测:
+    - 不使用 OnCollisionEnter
+    - 使用 Physics2D.BoxCast
 
 ==== 动画 ====
 名词: Animator / AnimatorController / State / AnimationClip
