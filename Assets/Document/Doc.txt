@@ -1,3 +1,7 @@
+==== 物理 ====
+1. Rigidbody2D 要设置 Constraints 防止翻滚
+2. 主角会设置 Collision Detection 为 Continous, 检测更消耗性能但更精确
+
 ==== 动画 ====
 名词: Animator / AnimatorController / State / AnimationClip
 1. Animator 和 SpriteRenderer 放在同一个 GameObject 下
@@ -10,6 +14,8 @@
 1. 使用 Addressables 插件
 2. 在编辑器创建: Window -> Asset Management -> Addressables -> Groups, 点击创建
 3. 标记每个资源
+4. Addressables 只支持官方的组件GameObject/ScriptableObject/Sprite ......
+    - 如果是自定义的类型需要先加载GameObject或ScriptableObject再GetComponent<YourType>
 
 ==== Tilemap ====
 名词: Palette / Tile

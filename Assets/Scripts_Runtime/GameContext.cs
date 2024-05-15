@@ -10,6 +10,7 @@ namespace PlatformerTutorial {
 
         // ==== 模块 ====
         public AssetsManager assetsManager;
+        public InputManager inputManager;
 
         // ==== 事件 ====
         public BusinessEvents events;
@@ -20,6 +21,7 @@ namespace PlatformerTutorial {
             mapRepository = new MapRepository();
 
             assetsManager = new AssetsManager();
+            inputManager = new InputManager();
 
             events = new BusinessEvents();
 

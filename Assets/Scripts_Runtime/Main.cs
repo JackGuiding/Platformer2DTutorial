@@ -52,6 +52,10 @@ namespace PlatformerTutorial {
         void Update() {
 
             float dt = Time.deltaTime;
+
+            // Process Input
+            ctx.inputManager.Tick(dt);
+
             var game = ctx.gameEntity;
             GameFSMStatus status = game.status;
             if (status == GameFSMStatus.Login) {

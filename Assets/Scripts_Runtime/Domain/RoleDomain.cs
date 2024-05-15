@@ -19,6 +19,11 @@ namespace PlatformerTutorial {
             ctx.roleRepository.Remove(id);
         }
 
+        public static void MoveByOwnerInput(GameContext ctx, RoleEntity role, float fixdt) {
+            var input = ctx.inputManager;
+            role.Move(input.moveAxis, 5.5f, fixdt);
+        }
+
     }
 
 }

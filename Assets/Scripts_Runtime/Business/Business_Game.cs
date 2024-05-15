@@ -62,6 +62,17 @@ namespace PlatformerTutorial {
         }
 
         static void LogicFixUpdate(GameContext ctx, float fixdt) {
+            // 逻辑
+            var game = ctx.gameEntity;
+            var input = ctx.inputManager;
+
+            ctx.roleRepository.Foreach(role => {
+                if (game.roleOwnerID == role.id) {
+                    RoleDomain.MoveByOwnerInput(ctx, role, fixdt);
+                } else {
+                    // Move By AI
+                }
+            });
 
         }
 

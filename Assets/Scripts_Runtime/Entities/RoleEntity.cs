@@ -20,5 +20,12 @@ namespace PlatformerTutorial {
 
         }
 
+        public void Move(Vector2 moveAxis, float speed, float fixdt) {
+            Vector2 oldVelocity = rb.velocity;
+            oldVelocity.x = moveAxis.x * speed;
+            // 保证 y 不被改变
+            rb.velocity = oldVelocity;
+        }
+
     }
 }
